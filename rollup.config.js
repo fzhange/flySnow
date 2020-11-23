@@ -23,22 +23,29 @@ import simplevars from 'postcss-simple-vars';
 import nested from 'postcss-nested';
 import autoprefixer from "autoprefixer";
 
-
-export default {
+export default     {
     input: [
-        "./src/Button/index.js",
-        // "./src/Alert/index.js",
+        "./components/Button/index.js",
+        "./components/Button/test.js"
+        // "./components/Alert/index.js",
+        // "./components/Button/index.js"
     ],
     output: [{
-        file: "./dist/index.js",
+        dir: "./lib/",
         format: "cjs",
-        sourcemap:true,
+        manualChunks(id,{getModuleInfo,getModuleIds}){
+            console.log('id: ', id);
+            // console.log('getModuleInfo(id).dynamicImporters: ', getModuleInfo(id).dynamicImporters);
+            console.log('getModuleInfo(id).importers(): ', getModuleInfo(id).importers);
+            // console.log('getModuleIds: ', Object.prototype.toString（） getModuleIds());
+        }
+        // sourcemap:true,
     }],
     external: ["react"],
     plugins: [
         postcss({
             extract: true,
-            inject:true,
+            // inject:true,
             minimize:false, //Compressed code base on cssnano
             plugins:[
                 autoprefixer(),
@@ -61,3 +68,4 @@ export default {
         // terser(),
     ]
 }
+
