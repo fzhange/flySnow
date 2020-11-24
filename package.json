@@ -3,8 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "main": "lib",
+  "module":"es",
   "scripts": {
-    "build": "rollup -c ./build/rollup.config.js"
+    "build": "npm run rmF && rollup -c ./build/rollup.config.js",
+    "build_1":"npm run rmF && rollup -c",
+    "rmF":"rm -rf ./lib && rm -rf ./es"
   },
   "keywords": [],
   "author": "",

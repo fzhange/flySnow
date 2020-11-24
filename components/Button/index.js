@@ -11,7 +11,7 @@ export default class Button extends React.Component{
     render(){
         return (
             <div className={style.div_style}>
-                <span className={style.hi} onClick={this.doClick.bind(this)}> this is alert </span>
+                <span className={style.hi} onClick={this.doClick.bind(this)}> button </span>
             </div>
         )
     }
