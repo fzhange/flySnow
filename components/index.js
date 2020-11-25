@@ -1,4 +1,4 @@
 import Button from "./Button";
-import Alert from "./Alert";
+import Placeholder from "./Placeholder"
 
-export {Button,Alert}
+export {Button,Placeholder}

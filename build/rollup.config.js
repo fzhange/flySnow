@@ -28,12 +28,12 @@ const postcssPresetEnv = require('postcss-preset-env');
 const simplevars = require('postcss-simple-vars');
 const nested = require('postcss-nested');
 const autoprefixer = require('autoprefixer');
-const modules = require('postcss-modules');
+// const modules = require('postcss-modules');
 
 
 const cjsOutPath = path.join(__dirname, "../lib");
 const esOutPath = path.join(__dirname, "../es");
-const umdOutPath = path.join(__dirname, "../dist");
+// const umdOutPath = path.join(__dirname, "../dist");
 
 
 export default {
@@ -48,7 +48,7 @@ export default {
         sourcemap: true,
         exports:"named",
     }],
-    external: ["react"],
+    external: ["react","react-dom","prop-types"],
     plugins: [
         postcss({
             // extract: true,
