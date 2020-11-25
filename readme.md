@@ -32,3 +32,10 @@ npm run dev
 # Development agreement
 
 开发组件默认在components目录下;具体请查看components Button组件。
+
+# Document effect display
+
+![doc 效果图](http://images.e-healthcare.net/images/2020/11/25/images2011251207333207.jpg "doc 效果图")
+
+
+
