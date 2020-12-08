@@ -6,18 +6,25 @@ import './index.less';
 /**
  * The only true button.
  */
-export default function Button({ color, size, onClick, disabled, children }) {
-	const styles = {
-		color,
-		fontSize: Button.sizes[size],
-	};
 
-	return (
-		<button className="button" style={styles} onClick={onClick} disabled={disabled}>
-			{children}
-		</button>
-	);
+export default class Button extends React.Component{
+	constructor(props){
+		super(props);	
+	}
+	render(){
+		let { color, size, onClick, disabled, children }  = this.props;
+		const styles = {
+			color,
+			fontSize: Button.sizes[size],
+		};
+		return (
+			<button className="button" style={styles} onClick={onClick} disabled={disabled}>
+				{children}
+			</button>
+		)
+	}
 }
+
 Button.propTypes = {
 	/** Button label */
 	children: PropTypes.node.isRequired,

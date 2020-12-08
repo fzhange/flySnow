@@ -8,7 +8,7 @@
     "build": "npm run rmF && rollup -c ./build/rollup.config.js",
     "rmF": "rm -rf ./lib && rm -rf ./es",
     "doc_server": "styleguidist server",
-    "doc_build":"styleguidist build",
+    "doc_build": "styleguidist build",
     "dev": "webpack-dev-server --open --mode development"
   },
   "keywords": [],
@@ -59,8 +59,9 @@
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
-    "@babel/runtime": "^7.12.5",
+    "@babel/polyfill": "^7.12.1",
     "@babel/runtime-corejs3": "^7.12.5",
+    "core-js": "^3.8.0",
     "log4js": "^6.3.0",
     "sam-test-data": "0.0.5"
   },
