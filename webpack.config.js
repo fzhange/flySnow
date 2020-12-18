@@ -32,11 +32,11 @@ module.exports = {
                         loader: "style-loader" // creates style nodes from JS strings
                     },{
                         loader: 'css-loader', 
-                        options: {
-                            modules: {
-                                localIdentName: "[local]_[hash:base64:5]",
-                            }, 
-                        }
+                        // options: {
+                        //     modules: {
+                        //         localIdentName: "[local]_[hash:base64:5]",
+                        //     }, 
+                        // }
                     },{
                         loader: "less-loader", // compiles Less to CSS
                         options: {
