@@ -22,8 +22,8 @@ const customizeBundleName = require("./rollup-plugin-customize-bundle-name");
  *  postcss-modules  A PostCSS plugin to use CSS Modules everywhere. Not only at the client side.
  *  ?postcss-modules https://www.npmjs.com/package/postcss-modules
  */
-// const postcss = require('rollup-plugin-postcss');
-const postcss = require('rollup-plugin-postcss-modules').default; //support css-modules 
+const postcss = require('rollup-plugin-postcss');
+// const postcss = require('rollup-plugin-postcss-modules').default; //support css-modules 
 const postcssPresetEnv = require('postcss-preset-env');
 const simplevars = require('postcss-simple-vars');
 const nested = require('postcss-nested');
