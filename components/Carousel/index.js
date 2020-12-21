@@ -10,12 +10,12 @@ export default function Carousel(props) {
         "https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3475665897,2387130440&fm=26&gp=0.jpg",
         "https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2102578530,3462366934&fm=26&gp=0.jpg",
         "https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2036306501,3289488371&fm=26&gp=0.jpg",
-        // "https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2652795496,2161831087&fm=26&gp=0.jpg"
+        "https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2652795496,2161831087&fm=26&gp=0.jpg"
     ], [
         "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=367228910,3693849048&fm=26&gp=0.jpg",
         "https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3531746777,723924818&fm=26&gp=0.jpg",
         "https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2986525947,195736070&fm=26&gp=0.jpg",
-        // "https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2652795496,2161831087&fm=26&gp=0.jpg"
+        "https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2652795496,2161831087&fm=26&gp=0.jpg"
     ], [
         "https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3475665897,2387130440&fm=26&gp=0.jpg",
         "https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2102578530,3462366934&fm=26&gp=0.jpg",
@@ -28,6 +28,9 @@ export default function Carousel(props) {
 
     let [marginLeft,setMarginLeft] = useState(0);
     let [swiperIdx,setSwiperIdx] = useState(0);
+    let [isleftNotClick,setIsleftNotClick] = useState(true);
+    let [isRightNotClick,setIsRightNotClick] = useState(false);
+
     let singleGroupLen = arr[0].length;
     let stepLength = parseFloat((100/singleGroupLen).toFixed(2));
 
@@ -49,6 +52,14 @@ export default function Carousel(props) {
         }
         setMarginLeft(marginLeftArr[swiperIdx]);
     },[swiperIdx])
+
+    useEffect(()=>{
+        if(swiperIdx <= 0) setIsleftNotClick(true);
+        else  setIsleftNotClick(false);
+        if(swiperIdx >= arr.length-1) setIsRightNotClick(true);
+        else setIsRightNotClick(false);
+    },[swiperIdx])
+
 
     function goLeft(){
         if(swiperIdx <= 0) return;
@@ -82,8 +93,8 @@ export default function Carousel(props) {
                     }
                 </div>
             </div>
-            <Button onClick={goLeft}>left</Button>
-            <Button onClick={goRight}>right</Button>
+            <Button color={isleftNotClick?'grey':"blue"}   onClick={goLeft}>left</Button>
+            <Button color={isRightNotClick?'grey':"blue"} onClick={goRight}>right</Button>
         </>
     )
 }
