@@ -1,31 +1,26 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useMemo } from "react";
 import './index.less';
 import { Button } from "../index";
 let marginLeftArr = [];
-
+const arr = [[
+    "https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3475665897,2387130440&fm=26&gp=0.jpg",
+    "https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2102578530,3462366934&fm=26&gp=0.jpg",
+    "https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2036306501,3289488371&fm=26&gp=0.jpg",
+    "https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2652795496,2161831087&fm=26&gp=0.jpg"
+], [
+    "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=367228910,3693849048&fm=26&gp=0.jpg",
+    "https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3531746777,723924818&fm=26&gp=0.jpg",
+    "https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2986525947,195736070&fm=26&gp=0.jpg",
+    "https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2652795496,2161831087&fm=26&gp=0.jpg"
+], [
+    "https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3475665897,2387130440&fm=26&gp=0.jpg",
+    "https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2102578530,3462366934&fm=26&gp=0.jpg",
+    // "https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2036306501,3289488371&fm=26&gp=0.jpg",
+    // "https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2652795496,2161831087&fm=26&gp=0.jpg"
+]]
 
 
 export default function Carousel(props) {
-    let arr = [[
-        "https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3475665897,2387130440&fm=26&gp=0.jpg",
-        "https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2102578530,3462366934&fm=26&gp=0.jpg",
-        "https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2036306501,3289488371&fm=26&gp=0.jpg",
-        "https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2652795496,2161831087&fm=26&gp=0.jpg"
-    ], [
-        "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=367228910,3693849048&fm=26&gp=0.jpg",
-        "https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3531746777,723924818&fm=26&gp=0.jpg",
-        "https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2986525947,195736070&fm=26&gp=0.jpg",
-        "https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2652795496,2161831087&fm=26&gp=0.jpg"
-    ], [
-        "https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3475665897,2387130440&fm=26&gp=0.jpg",
-        "https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2102578530,3462366934&fm=26&gp=0.jpg",
-        // "https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2036306501,3289488371&fm=26&gp=0.jpg",
-        // "https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2652795496,2161831087&fm=26&gp=0.jpg"
-    ]]
-  
-
-
-
     let [marginLeft,setMarginLeft] = useState(0);
     let [swiperIdx,setSwiperIdx] = useState(0);
     let [isleftNotClick,setIsleftNotClick] = useState(true);
@@ -34,13 +29,7 @@ export default function Carousel(props) {
     let singleGroupLen = arr[0].length;
     let stepLength = parseFloat((100/singleGroupLen).toFixed(2));
 
-
-    useEffect(()=>{
-        if(marginLeftArr.length){
-            setMarginLeft(marginLeftArr[swiperIdx]);
-            return;
-        }
-
+    useMemo(()=>{
         let idx = 0;
         while(idx < arr.length){
          let marginLeft = idx * 100;
@@ -50,6 +39,10 @@ export default function Carousel(props) {
          marginLeftArr.push(marginLeft);
          idx++;
         }
+    },[arr]);
+
+
+    useEffect(()=>{
         setMarginLeft(marginLeftArr[swiperIdx]);
     },[swiperIdx])
 
